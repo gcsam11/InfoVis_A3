@@ -35,8 +35,9 @@ export function drawChoropleth(world) {
         .attr("class", "tooltip")
         .style("opacity", 0);
 
-    svg.append("g")
-        .selectAll("path")
+    const g = svg.append("g");
+
+    g.selectAll("path")
         .data(world.features)
         .join("path")
         .attr("d", path)
@@ -46,6 +47,11 @@ export function drawChoropleth(world) {
             const v = d.properties.sales;
             return v ? colorScale(v) : "#eee";
         })
+        .attr("opacity", 0)
+    .transition()
+        .duration(1500)
+        .attr("opacity", 1)
+    .selection()
         .on("mouseover", function (event, d) {
             d3.select(this)
                 .attr("stroke", "black")
@@ -69,4 +75,16 @@ export function drawChoropleth(world) {
 
             tooltip.style("opacity", 0);
         });
+
+    // add zoom behavior
+    const zoom = d3.zoom()
+        .scaleExtent([1, 8])
+        .translateExtent([[0, 0], [width, height]])
+        .extent([[0, 0], [width, height]])
+        .on("zoom", (event) => {
+            g.attr("transform", event.transform);
+        });
+
+    svg.call(zoom)
+    .on("dblclick.zoom", null); // disable zoom on double click
 }

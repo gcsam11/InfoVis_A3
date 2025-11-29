@@ -26,6 +26,10 @@ h1 {
   margin: 0 auto;
 }
 
+#world_map path {
+  vector-effect: non-scaling-stroke;
+}
+
 .tooltip {
   position: absolute;
   pointer-events: none;
