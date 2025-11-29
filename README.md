@@ -6,9 +6,9 @@ In order to map an interactive hover effect, a [geoJson dataset](https://raw.git
 
 ### Hosting and Deployment
 
-This project's source code is available [here](https://github.com/gcsam11/InfoVis_A3).
+This project's source code is available [here](https://github.com/gcsam11/gcsam11.github.io).
 
-The live visualization can be seen [here]().
+The live visualization can be seen [here](https://gcsam11.github.io/).
 
 If the live visualization is not working, please open this folder in VSCode and run the [LiveServer](https://github.com/ritwickdey/vscode-live-server) plugin.
 
